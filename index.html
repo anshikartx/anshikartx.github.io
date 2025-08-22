@@ -30,11 +30,46 @@
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
+        /* --- Animation Enhancements --- */
+
+        /* Animated Gradient Background */
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animated-gradient-bg {
+            background-size: 200% 200%;
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        /* Scroll Animation Initial States */
+        .scroll-animate {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.fade-in-up {
+            transform: translateY(30px);
+        }
+        .scroll-animate.fade-in-down {
+            transform: translateY(-30px);
+        }
+        .scroll-animate.fade-in-left {
+            transform: translateX(-40px);
+        }
+        .scroll-animate.fade-in-right {
+            transform: translateX(40px);
+        }
+        /* Final visible state */
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
 
-    <!-- Header -->
     <header id="home" class="fixed w-full top-0 z-50 bg-gray-900/80 backdrop-blur-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold tracking-wider gradient-text">anshika.artx</a>
@@ -48,7 +83,6 @@
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95">
             <a href="#about" class="block py-3 px-6 text-center hover:bg-gray-800">About</a>
             <a href="#skills" class="block py-3 px-6 text-center hover:bg-gray-800">Skills</a>
@@ -58,32 +92,30 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center text-center gradient-bg pt-20">
+        <section class="min-h-screen flex items-center justify-center text-center gradient-bg animated-gradient-bg pt-20">
             <div class="container mx-auto px-6">
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-4">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-4 scroll-animate" data-animation="fade-in-down">
                     Anshika Tiwari
                 </h1>
-                <p class="text-2xl md:text-4xl font-light gradient-text mb-8">
+                <p class="text-2xl md:text-4xl font-light gradient-text mb-8 scroll-animate" data-animation="fade-in-up" style="transition-delay: 200ms;">
                     Crafting Visual Stories & Digital Experiences
                 </p>
-                <p class="max-w-3xl mx-auto text-gray-300 mb-12 text-lg">
+                <p class="max-w-3xl mx-auto text-gray-300 mb-12 text-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 400ms;">
                     I'm a passionate freelance graphic designer specializing in branding, UI/UX, and illustration. I transform ideas into compelling visuals that connect with audiences and elevate brands.
                 </p>
-                <a href="#portfolio" class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 inline-block text-lg">
+                <a href="#portfolio" class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 inline-block text-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 600ms;">
                     View My Work
                 </a>
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about" class="py-20 md:py-32 bg-gray-900">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                    <div class="md:w-1/3">
+                    <div class="md:w-1/3 scroll-animate" data-animation="fade-in-left">
                         <img src="https://placehold.co/600x600/3a1c5a/FFFFFF?text=Anshika" alt="Anshika Tiwari" class="rounded-full w-64 h-64 md:w-full md:h-auto mx-auto border-4 border-purple-500 shadow-2xl">
                     </div>
-                    <div class="md:w-2/3 text-center md:text-left">
+                    <div class="md:w-2/3 text-center md:text-left scroll-animate" data-animation="fade-in-right" style="transition-delay: 200ms;">
                         <h2 class="text-4xl font-bold mb-4 gradient-text">About Me</h2>
                         <p class="text-lg text-gray-300 mb-4 leading-relaxed">
                             Hello! I'm Anshika Tiwari, a creative soul with a deep love for visual design. My journey began with a simple sketchbook and has evolved into a full-fledged passion for helping businesses tell their unique stories through powerful and beautiful design.
@@ -97,58 +129,49 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 md:py-32 gradient-bg">
+        <section id="skills" class="py-20 md:py-32 gradient-bg animated-gradient-bg">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 scroll-animate" data-animation="fade-in-up">
                     <h2 class="text-4xl font-bold text-white mb-4">My Design Toolkit</h2>
                     <p class="text-lg text-gray-300 max-w-2xl mx-auto">The core competencies I bring to every project, ensuring professional and impactful results.</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 100ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="type" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">Typography</h3>
                         <p class="text-gray-400">Mastery of arranging text to create readable, legible, and visually appealing content that communicates a clear message.</p>
                     </div>
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 200ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="palette" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">Color Theory</h3>
                         <p class="text-gray-400">Expert understanding of color psychology and harmony to evoke emotion, create mood, and build brand recognition.</p>
                     </div>
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 300ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="layout-template" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">Layout & Composition</h3>
                         <p class="text-gray-400">Skillfully arranging visual elements to guide the viewer's eye, create balance, and establish a strong visual hierarchy.</p>
                     </div>
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 400ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="gem" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">Branding & Identity</h3>
                         <p class="text-gray-400">Creating cohesive and memorable brand identities, from logos and style guides to complete visual systems.</p>
                     </div>
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 500ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="mouse-pointer-click" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">UI/UX Design</h3>
                         <p class="text-gray-400">Designing intuitive and user-friendly interfaces for websites and applications that enhance the user experience.</p>
                     </div>
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 600ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="pen-tool" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">Illustration</h3>
                         <p class="text-gray-400">Crafting unique, custom illustrations and graphics to add a personal touch and distinctive style to projects.</p>
                     </div>
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 700ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="printer" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">Print Design</h3>
                         <p class="text-gray-400">Designing for tangible media, including brochures, business cards, posters, and packaging with precision for print.</p>
                     </div>
-                    <!-- Skill Card -->
-                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700">
+                    <div class="skill-card bg-gray-800/50 p-8 rounded-2xl text-center backdrop-blur-sm border border-gray-700 scroll-animate" data-animation="fade-in-up" style="transition-delay: 800ms;">
                         <div class="flex justify-center mb-4"><i data-lucide="figma" class="w-12 h-12 text-pink-400"></i></div>
                         <h3 class="text-xl font-bold mb-2 text-white">Software Proficiency</h3>
                         <p class="text-gray-400">Expert in Adobe Creative Suite (Photoshop, Illustrator, InDesign) and modern tools like Figma for seamless workflows.</p>
@@ -157,56 +180,49 @@
             </div>
         </section>
 
-        <!-- Portfolio Section -->
         <section id="portfolio" class="py-20 md:py-32 bg-gray-900">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 scroll-animate" data-animation="fade-in-up">
                     <h2 class="text-4xl font-bold gradient-text mb-4">Featured Work</h2>
                     <p class="text-lg text-gray-300 max-w-2xl mx-auto">A selection of projects that showcase my passion for design and problem-solving.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Portfolio Item -->
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 100ms;">
                         <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Project+One" alt="Project One" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <h3 class="text-2xl font-bold text-white mb-2">E-commerce Branding</h3>
                             <p class="text-gray-200">A complete visual identity for a modern online fashion retailer.</p>
                         </div>
                     </div>
-                    <!-- Portfolio Item -->
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 200ms;">
                         <img src="https://placehold.co/600x400/FF1493/FFFFFF?text=Project+Two" alt="Project Two" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <h3 class="text-2xl font-bold text-white mb-2">Mobile App UI/UX</h3>
                             <p class="text-gray-200">Designing an intuitive user interface for a wellness and meditation app.</p>
                         </div>
                     </div>
-                    <!-- Portfolio Item -->
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 300ms;">
                         <img src="https://placehold.co/600x400/6A0DAD/FFFFFF?text=Project+Three" alt="Project Three" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <h3 class="text-2xl font-bold text-white mb-2">Podcast Cover Art</h3>
                             <p class="text-gray-200">Creating vibrant and engaging cover art for a technology podcast series.</p>
                         </div>
                     </div>
-                     <!-- Portfolio Item -->
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                     <div class="group relative overflow-hidden rounded-lg shadow-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 400ms;">
                         <img src="https://placehold.co/600x400/C71585/FFFFFF?text=Project+Four" alt="Project Four" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <h3 class="text-2xl font-bold text-white mb-2">Marketing Campaign</h3>
                             <p class="text-gray-200">Social media graphics and print materials for a new product launch.</p>
                         </div>
                     </div>
-                     <!-- Portfolio Item -->
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                     <div class="group relative overflow-hidden rounded-lg shadow-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 500ms;">
                         <img src="https://placehold.co/600x400/4B0082/FFFFFF?text=Project+Five" alt="Project Five" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <h3 class="text-2xl font-bold text-white mb-2">Custom Illustrations</h3>
                             <p class="text-gray-200">A series of bespoke illustrations for a children's book.</p>
                         </div>
                     </div>
-                     <!-- Portfolio Item -->
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                     <div class="group relative overflow-hidden rounded-lg shadow-lg scroll-animate" data-animation="fade-in-up" style="transition-delay: 600ms;">
                         <img src="https://placehold.co/600x400/DA70D6/FFFFFF?text=Project+Six" alt="Project Six" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <h3 class="text-2xl font-bold text-white mb-2">Restaurant Menu Design</h3>
@@ -217,15 +233,14 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 gradient-bg">
+        <section id="contact" class="py-20 md:py-32 gradient-bg animated-gradient-bg">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center mb-12 scroll-animate" data-animation="fade-in-up">
                     <h2 class="text-4xl font-bold text-white mb-4">Let's Get In Touch</h2>
                     <p class="text-lg text-gray-300 max-w-2xl mx-auto">Have a project in mind or just want to say hello? My inbox is always open.</p>
                 </div>
                 <div class="max-w-3xl mx-auto">
-                    <form action="#" method="POST" class="space-y-6">
+                    <form action="#" method="POST" class="space-y-6 scroll-animate" data-animation="fade-in-up" style="transition-delay: 200ms;">
                         <div class="flex flex-col md:flex-row gap-6">
                             <input type="text" placeholder="Your Name" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500" required>
                             <input type="email" placeholder="Your Email" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500" required>
@@ -237,7 +252,7 @@
                             </button>
                         </div>
                     </form>
-                    <div class="text-center mt-12">
+                    <div class="text-center mt-12 scroll-animate" data-animation="fade-in-up" style="transition-delay: 400ms;">
                         <p class="text-gray-300 mb-4">Or find me on social media:</p>
                         <div class="flex justify-center space-x-6">
                             <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors"><i data-lucide="instagram" class="w-8 h-8"></i></a>
@@ -251,7 +266,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 py-8">
         <div class="container mx-auto px-6 text-center text-gray-500">
             <p>&copy; 2024 Anshika Tiwari (anshika.artx). All Rights Reserved.</p>
@@ -277,6 +291,43 @@
                 mobileMenu.classList.add('hidden');
             });
         }
+
+        // --- Scroll Animation Logic ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add the animation class defined in the data attribute
+                        const animationType = entry.target.dataset.animation || 'fade-in-up';
+                        entry.target.classList.add(animationType);
+
+                        // Add the 'visible' class to trigger the animation
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, 50);
+
+                        // Stop observing the element after it has been animated
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, // Animate when 10% of the element is in view
+            });
+
+            // Start hero animations immediately on page load
+            document.querySelectorAll('.hero-section-animate').forEach(el => {
+                const animationType = el.dataset.animation || 'fade-in-up';
+                el.classList.add(animationType);
+                 setTimeout(() => {
+                    el.classList.add('visible');
+                }, 50);
+            });
+            
+            // Observe all other elements with the .scroll-animate class
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>
